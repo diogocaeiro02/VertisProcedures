@@ -1,6 +1,6 @@
-[![Website](https://img.shields.io/website?url=https%3A%2F%2FSEU-UTILIZADOR.github.io%2FSEU-REPOSITORIO%2F)](https://SEU-UTILIZADOR.github.io/SEU-REPOSITORIO/)
-[![GitHub last commit](https://img.shields.io/github/last-commit/SEU-UTILIZADOR/SEU-REPOSITORIO)](https://github.com/SEU-UTILIZADOR/SEU-REPOSITORIO)
-[![GitHub repo size](https://img.shields.io/github/repo-size/SEU-UTILIZADOR/SEU-REPOSITORIO)](https://github.com/SEU-UTILIZADOR/SEU-REPOSITORIO)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fdiogocaeiro02.github.io%VertisProcedures%2F)](https://diogocaeiro02.github.io/VertisProcedures/)
+[![GitHub last commit](https://img.shields.io/github/last-commit/diogocaeiro02/VertisProcedures)](https://github.com/diogocaeiro02/VertisProcedures)
+[![GitHub repo size](https://img.shields.io/github/repo-size/diogocaeiro02/VertisProcedures)](https://github.com/diogocaeiro02/VertisProcedures)
 [![GitHub Pages](https://img.shields.io/badge/deployment-GitHub%20Pages-222222?logo=github)](https://pages.github.com/)
 [![Static Website](https://img.shields.io/badge/type-static%20website-009846)](#)
 
@@ -27,9 +27,7 @@ Depois, retire o comentário da linha seguinte:
 
 ## 🌐 Site
 
-🔗 [Abrir o Portal Vertis](https://SEU-UTILIZADOR.github.io/SEU-REPOSITORIO/)
-
-> Substitua `SEU-UTILIZADOR` e `SEU-REPOSITORIO` pelo utilizador e nome reais do repositório no GitHub.
+🔗 [Abrir o Portal Vertis](https://diogocaeiro02.github.io/VertisProcedures/)
 
 ---
 
