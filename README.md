@@ -1,39 +1,107 @@
-# Manual de Procedimentos Vertis
+[![Website](https://img.shields.io/website?url=https%3A%2F%2FSEU-UTILIZADOR.github.io%2FSEU-REPOSITORIO%2F)](https://SEU-UTILIZADOR.github.io/SEU-REPOSITORIO/)
+[![GitHub last commit](https://img.shields.io/github/last-commit/SEU-UTILIZADOR/SEU-REPOSITORIO)](https://github.com/SEU-UTILIZADOR/SEU-REPOSITORIO)
+[![GitHub repo size](https://img.shields.io/github/repo-size/SEU-UTILIZADOR/SEU-REPOSITORIO)](https://github.com/SEU-UTILIZADOR/SEU-REPOSITORIO)
+[![GitHub Pages](https://img.shields.io/badge/deployment-GitHub%20Pages-222222?logo=github)](https://pages.github.com/)
+[![Static Website](https://img.shields.io/badge/type-static%20website-009846)](#)
 
-Manual interno para consulta de procedimentos operacionais da Vertis — Gestão de Condomínios.
+# 🏢 Vertis — Portal Interno de Procedimentos e Ferramentas
 
-O projeto foi desenvolvido como uma aplicação web estática, leve e fácil de manter. Os procedimentos são guardados em ficheiros CSV e apresentados automaticamente numa interface organizada, pesquisável e adaptada a computador, tablet e telemóvel.
-
----
-
-## Visão geral
-
-O manual permite:
-
-- consultar procedimentos por categoria;
-- pesquisar por título, responsável, objetivo, passo, documento ou observação;
-- expandir e recolher procedimentos;
-- ordenar os resultados;
-- abrir ligações diretas para um procedimento específico;
-- apresentar imagens associadas aos passos;
-- imprimir o manual com uma formatação adequada;
-- publicar diretamente no GitHub Pages ou noutro alojamento estático.
-
-Não utiliza base de dados, servidor aplicacional ou frameworks.
+> Portal interno desenvolvido para apoiar a operação diária da **Vertis — Gestão de Condomínios**.  
+> O projeto reúne procedimentos operacionais, pesquisa, filtros, impressão individual e ferramentas de apoio à gestão, incluindo uma calculadora de orçamentos com fases de pagamento e regimes de IVA configuráveis.
 
 ---
 
-## Tecnologias
+## 📸 Pré-visualização
 
-- HTML
-- CSS
-- JavaScript
-- CSV
-- GitHub Pages
+Adicione uma imagem do portal neste caminho:
+
+```text
+assets/preview.jpg
+```
+
+Depois, retire o comentário da linha seguinte:
+
+<!-- ![Pré-visualização do Portal Vertis](assets/preview.jpg) -->
 
 ---
 
-## Estrutura do projeto
+## 🌐 Site
+
+🔗 [Abrir o Portal Vertis](https://SEU-UTILIZADOR.github.io/SEU-REPOSITORIO/)
+
+> Substitua `SEU-UTILIZADOR` e `SEU-REPOSITORIO` pelo utilizador e nome reais do repositório no GitHub.
+
+---
+
+## ✨ Funcionalidades
+
+- 📚 **Manual de procedimentos** organizado por categoria
+- 🔎 **Pesquisa** por título, objetivo, responsável, passo ou documento
+- 🗂️ **Filtros e ordenação** dos procedimentos
+- 🖨️ **Impressão individual** de cada procedimento
+- 🖼️ **Imagens associadas aos passos**
+- 🔗 **Ligações diretas** para procedimentos específicos
+- 🔐 **Código visual de acesso** à área de procedimentos
+- 🧰 **Área de ferramentas**
+- 💶 **Calculadora de orçamentos**
+- 🧾 **IVA configurável** por taxa e percentagem da base
+- 📊 **Fases de pagamento dinâmicas**
+- 📋 **Modelos de texto prontos a copiar**
+- 📱 **Interface responsiva** para computador, tablet e telemóvel
+- 🌐 **Publicação direta no GitHub Pages**
+
+---
+
+## 🧮 Calculadora de Orçamentos
+
+A calculadora permite configurar:
+
+- valor total da obra sem IVA;
+- adjudicação;
+- pagamentos intermediários;
+- pagamento final;
+- número livre de fases;
+- taxa de IVA;
+- percentagem da base sujeita a cada taxa.
+
+As fases de pagamento e a distribuição do IVA devem totalizar **100%**.
+
+### Formatação monetária
+
+Os valores são apresentados no formato português:
+
+```text
+18.500,00€
+```
+
+### Modelos disponíveis
+
+A calculadora inclui quatro botões de cópia:
+
+- **Pagamento da adjudicação**
+- **Pagamento intermédio**
+- **Pagamento final**
+- **Orçamentação**
+
+Os valores e percentagens conhecidos são preenchidos automaticamente. Os restantes campos ficam preparados para preenchimento pelos colaboradores.
+
+---
+
+## 🛠️ Tecnologias
+
+- 🌐 **HTML5**
+- 🎨 **CSS3**
+- ⚙️ **JavaScript**
+- 📄 **CSV**
+- 📦 **GitHub Pages**
+- 🔒 **Session Storage** para manter o estado de acesso durante a sessão
+- 🧩 **Sem frameworks**
+- 🗄️ **Sem base de dados**
+- 🖥️ **Sem backend**
+
+---
+
+## 📁 Estrutura do Projeto
 
 ```text
 /
@@ -44,215 +112,57 @@ Não utiliza base de dados, servidor aplicacional ou frameworks.
 ├── README.md
 ├── PUBLICAR_GITHUB_PAGES.md
 │
-├── procedimentos/
-│   ├── index.js
-│   ├── MODELO_PROCEDIMENTO.csv
-│   ├── 01_registo_ocorrencias.csv
-│   ├── 02_pagamento_fornecedores.csv
-│   └── 03_preparacao_assembleia.csv
+├── assets/
+│   ├── branding/
+│   │   ├── logo.jpg
+│   │   ├── icon.jpg
+│   │   └── LEIA-ME.txt
+│   │
+│   └── imagens/
+│       └── procedimentos/
+│           └── nome-do-procedimento/
+│               ├── 01-primeiro-passo.webp
+│               └── 02-segundo-passo.webp
 │
-└── assets/
-    └── imagens/
-        └── procedimentos/
-            └── registo-ocorrencias/
-                ├── 01-receber-ocorrencia.webp
-                ├── 02-classificar-registar.webp
-                ├── 03-acompanhar-resolucao.webp
-                └── 04-encerrar-ocorrencia.webp
+└── procedimentos/
+    ├── index.js
+    ├── MODELO_PROCEDIMENTO.csv
+    ├── 01_registo_ocorrencias.csv
+    ├── 02_pagamento_fornecedores.csv
+    ├── 03_preparacao_assembleia.csv
+    └── ...
 ```
 
 ---
 
-## Adicionar um procedimento
+## 🚀 Executar Localmente
 
-### 1. Criar o CSV
+Como o portal carrega ficheiros CSV através de JavaScript, não é recomendado abrir diretamente o `index.html` através de `file://`.
 
-Duplicar o ficheiro:
+### Opção 1 — Python
+
+Na pasta do projeto:
+
+```bash
+python -m http.server 8000
+```
+
+Depois, abrir:
 
 ```text
-procedimentos/MODELO_PROCEDIMENTO.csv
+http://127.0.0.1:8000
 ```
 
-Dar um nome claro ao novo ficheiro:
+### Opção 2 — VS Code
 
-```text
-04_validacao_contratos.csv
-```
-
-Recomendações:
-
-- usar letras minúsculas;
-- evitar espaços;
-- evitar acentos;
-- usar `_` para separar palavras;
-- manter uma numeração inicial para facilitar a organização.
-
-### 2. Preencher o procedimento
-
-Cada ficheiro CSV representa um procedimento.
-
-Cada linha representa um passo desse procedimento.
-
-As colunas obrigatórias são:
-
-```text
-titulo
-categoria
-passo_numero
-passo_descricao
-```
-
-As restantes colunas permitem acrescentar informação complementar:
-
-```text
-id
-ordem
-responsavel
-objetivo
-passo_titulo
-passo_imagem
-passo_imagem_alt
-passo_imagem_legenda
-prazo
-documentos
-observacoes
-ativo
-versao
-ultima_revisao
-```
-
-### 3. Registar o ficheiro
-
-Abrir:
-
-```text
-procedimentos/index.js
-```
-
-Adicionar o nome do novo ficheiro à lista:
-
-```javascript
-window.VERTIS_PROCEDURE_FILES = [
-  "01_registo_ocorrencias.csv",
-  "02_pagamento_fornecedores.csv",
-  "03_preparacao_assembleia.csv",
-  "04_validacao_contratos.csv"
-];
-```
-
-Após o commit e push, o procedimento passa a estar disponível no manual.
+1. Instalar a extensão **Live Server**
+2. Abrir a pasta do projeto
+3. Clicar com o botão direito em `index.html`
+4. Escolher **Open with Live Server**
 
 ---
 
-## Formato do CSV
-
-Exemplo simplificado:
-
-```csv
-id;titulo;categoria;ordem;responsavel;objetivo;passo_numero;passo_titulo;passo_descricao;prazo;documentos;observacoes;ativo;versao;ultima_revisao
-PROC-FIN-001;Pagamento a fornecedores;Contabilidade;20;Departamento Financeiro;Garantir a validação das despesas antes do pagamento.;1;Conferir a fatura;Validar fornecedor, valores, IVA e vencimento.;Antes do pagamento;Fatura e orçamento aprovado;Suspender o processo em caso de divergência.;1;1.0;2026-07-21
-```
-
-O separador utilizado é o ponto e vírgula:
-
-```text
-;
-```
-
-O ficheiro deve ser guardado em UTF-8.
-
----
-
-## Imagens nos procedimentos
-
-As imagens são opcionais e podem ser associadas a cada passo.
-
-### Colunas disponíveis
-
-```text
-passo_imagem
-passo_imagem_alt
-passo_imagem_legenda
-```
-
-### Exemplo no CSV
-
-```csv
-passo_imagem;passo_imagem_alt;passo_imagem_legenda
-assets/imagens/procedimentos/registo-ocorrencias/01-receber-ocorrencia.webp;Formulário de registo de uma ocorrência;Dados necessários para o registo inicial.
-```
-
-### Organização recomendada
-
-```text
-assets/
-└── imagens/
-    └── procedimentos/
-        └── nome-do-procedimento/
-            ├── 01-primeiro-passo.webp
-            ├── 02-segundo-passo.webp
-            └── 03-terceiro-passo.webp
-```
-
-Boas práticas:
-
-- preferir imagens `.webp`;
-- usar nomes em minúsculas;
-- não usar espaços nos nomes;
-- preencher sempre o texto alternativo;
-- utilizar caminhos relativos;
-- não começar o caminho por `/`;
-- confirmar que o nome no CSV corresponde exatamente ao ficheiro.
-
-O GitHub Pages distingue maiúsculas de minúsculas.
-
-```text
-imagem.webp
-Imagem.webp
-```
-
-São considerados ficheiros diferentes.
-
----
-
-## Ativar ou desativar um procedimento
-
-A coluna `ativo` controla a apresentação do procedimento.
-
-Procedimento ativo:
-
-```text
-1
-```
-
-Procedimento inativo:
-
-```text
-0
-```
-
-Um procedimento inativo continua no repositório, mas não é apresentado no manual.
-
----
-
-## Ordem dos procedimentos
-
-A coluna `ordem` controla a posição dentro da categoria.
-
-Exemplo:
-
-```text
-10
-20
-30
-40
-```
-
-Utilizar intervalos de dez permite inserir novos procedimentos entre os existentes sem alterar todos os valores.
-
----
-
-## Publicação no GitHub Pages
+## 📦 Publicação no GitHub Pages
 
 No repositório, abrir:
 
@@ -268,7 +178,7 @@ Branch: main
 Folder: /(root)
 ```
 
-A estrutura principal deve estar diretamente na raiz publicada:
+A raiz do repositório deve conter diretamente:
 
 ```text
 index.html
@@ -278,249 +188,140 @@ procedimentos/
 assets/
 ```
 
-Após guardar a configuração, aguardar a conclusão do workflow em:
+Depois do `commit` e `push`, acompanhar a publicação em:
 
 ```text
 Actions
 ```
 
-O endereço será semelhante a:
-
-```text
-https://utilizador.github.io/nome-do-repositorio/
-```
-
 ---
 
-## Pré-visualização local
+## 📄 Adicionar um Procedimento
 
-Abrir diretamente o `index.html` através de `file://` pode impedir a leitura dos CSV devido às regras de segurança do navegador.
-
-A forma recomendada é utilizar um servidor local.
-
-### VS Code
-
-1. Instalar a extensão **Live Server**.
-2. Clicar com o botão direito em `index.html`.
-3. Selecionar **Open with Live Server**.
-
-### Python
-
-Na pasta do projeto:
-
-```bash
-python -m http.server 8000
-```
-
-Depois abrir:
+### 1. Duplicar o modelo
 
 ```text
-http://127.0.0.1:8000
+procedimentos/MODELO_PROCEDIMENTO.csv
 ```
 
----
-
-## Manutenção
-
-Antes de publicar uma alteração:
-
-1. confirmar que o CSV abre corretamente;
-2. verificar se as colunas obrigatórias estão preenchidas;
-3. confirmar a numeração dos passos;
-4. validar os caminhos das imagens;
-5. testar a pesquisa e os filtros;
-6. confirmar a apresentação em computador e telemóvel;
-7. fazer commit com uma descrição clara.
+### 2. Dar um nome ao ficheiro
 
 Exemplo:
 
-```bash
-git add .
-git commit -m "Adiciona procedimento de validação de contratos"
-git push
+```text
+10_validacao_contratos.csv
+```
+
+Recomendações:
+
+- utilizar letras minúsculas;
+- evitar espaços;
+- evitar acentos;
+- usar `_` para separar palavras;
+- manter numeração inicial.
+
+### 3. Registar o ficheiro
+
+Abrir:
+
+```text
+procedimentos/index.js
+```
+
+Adicionar o nome do novo CSV:
+
+```javascript
+window.VERTIS_PROCEDURE_FILES = [
+  "01_registo_ocorrencias.csv",
+  "02_pagamento_fornecedores.csv",
+  "10_validacao_contratos.csv"
+];
 ```
 
 ---
 
-## Convenções recomendadas
+## 🧾 Formato dos Procedimentos
 
-### Ficheiros CSV
+Cada ficheiro CSV representa um procedimento.
 
-```text
-01_registo_ocorrencias.csv
-02_pagamento_fornecedores.csv
-03_preparacao_assembleia.csv
-```
+Cada linha representa um passo.
 
-### Pastas de imagens
+### Colunas obrigatórias
 
 ```text
-registo-ocorrencias
-pagamento-fornecedores
-preparacao-assembleia
+titulo
+categoria
+passo_numero
+passo_descricao
 ```
 
-### Identificadores
+### Colunas disponíveis
 
 ```text
-PROC-OPE-001
-PROC-FIN-001
-PROC-ADM-001
+id
+titulo
+categoria
+ordem
+responsavel
+objetivo
+passo_numero
+passo_titulo
+passo_descricao
+passo_imagem
+passo_imagem_alt
+passo_imagem_legenda
+prazo
+documentos
+observacoes
+ativo
+versao
+ultima_revisao
 ```
 
-### Versões
+O separador utilizado é:
 
 ```text
-1.0
-1.1
-2.0
+;
 ```
+
+Os ficheiros devem ser guardados em **UTF-8**.
 
 ---
 
-## Resolução de problemas
+## 🖼️ Imagens nos Procedimentos
 
-### O site aparece sem estilos
-
-Confirmar que este endereço abre o ficheiro CSS:
+As imagens devem ser guardadas em:
 
 ```text
-https://utilizador.github.io/repositorio/styles.css
+assets/imagens/procedimentos/nome-do-procedimento/
 ```
 
-Caso devolva erro 404:
+Exemplo:
 
-- confirmar que `styles.css` está na raiz publicada;
-- confirmar que o nome está escrito exatamente da mesma forma;
-- confirmar a configuração do GitHub Pages.
+```text
+assets/imagens/procedimentos/registo-ocorrencias/01-receber-ocorrencia.webp
+```
 
-### Os procedimentos não aparecem
+No CSV:
 
-Verificar:
+```csv
+passo_imagem;passo_imagem_alt;passo_imagem_legenda
+assets/imagens/procedimentos/registo-ocorrencias/01-receber-ocorrencia.webp;Formulário de registo;Dados necessários para o registo inicial.
+```
 
-- se o CSV está dentro de `procedimentos/`;
-- se o nome foi adicionado a `procedimentos/index.js`;
-- se as colunas obrigatórias existem;
-- se `ativo` está definido como `1`;
-- se o nome do ficheiro respeita maiúsculas e minúsculas.
+Boas práticas:
 
-### Uma imagem não aparece
-
-Verificar:
-
-- se o ficheiro existe no repositório;
-- se o caminho no CSV está correto;
-- se a extensão corresponde ao ficheiro real;
-- se o caminho não começa por `/`;
-- se não existem diferenças entre maiúsculas e minúsculas.
+- preferir `.webp`;
+- usar nomes em minúsculas;
+- não usar espaços;
+- preencher sempre o texto alternativo;
+- não iniciar o caminho por `/`.
 
 ---
 
-## Responsabilidade de manutenção
+## 🎨 Logótipo e Ícone
 
-Este manual é um documento operacional interno.
-
-As alterações devem ser revistas antes da publicação, garantindo que:
-
-- a informação está atualizada;
-- os responsáveis estão corretamente identificados;
-- os passos são claros e executáveis;
-- os documentos associados estão disponíveis;
-- a versão e a data de revisão foram atualizadas.
-
-
-## Ferramentas
-
-O portal inclui uma área pública de ferramentas.
-
-### Calculadora de Orçamentos
-
-A calculadora recebe um valor sem IVA e permite definir:
-
-- percentagem de adjudicação;
-- percentagem de pagamento final;
-- 100% do orçamento a 6%;
-- 100% do orçamento a 23%;
-- 30% do orçamento a 23% e 70% a 6%.
-
-Os resultados apresentam a base, o IVA, o total e os montantes de cada fase.
-
-## Código dos procedimentos
-
-A interface dos procedimentos está protegida por um código de sessão.
-
-```text
-2011
-```
-
-O desbloqueio mantém-se apenas durante a sessão atual do separador.
-
-> Esta proteção é apenas uma barreira de utilização. Num site estático do
-> GitHub Pages, os ficheiros CSV continuam tecnicamente acessíveis através
-> dos respetivos endereços públicos. Não deve ser utilizada para informação
-> confidencial.
-
-
-## Calculadora variável
-
-A calculadora permite configurar três fases de pagamento:
-
-- adjudicação;
-- pagamento intermédio;
-- pagamento final.
-
-As percentagens são independentes e devem totalizar 100%.
-
-O regime de IVA é igualmente configurável. Cada linha contém:
-
-- a taxa de IVA aplicável;
-- a percentagem da base sujeita a essa taxa.
-
-É possível adicionar ou remover taxas. A distribuição da base pelas taxas
-deve totalizar 100%.
-
-
-## Modelos de texto da calculadora
-
-A calculadora disponibiliza quatro botões de cópia:
-
-- Pagamento da adjudicação;
-- Pagamento intermédio;
-- Pagamento final;
-- Orçamentação.
-
-Os montantes e percentagens conhecidos são preenchidos automaticamente.
-Os campos administrativos, como fornecedor, intervenção, ata, despesa e
-IBAN, permanecem preparados para preenchimento pelos colaboradores.
-
-As fases de pagamento são configuradas numa grelha dinâmica. É possível
-adicionar, renomear e eliminar fases, desde que a soma final seja 100%.
-
-Os valores monetários são apresentados no formato:
-
-```text
-18.500,00€
-```
-
-
-## Listas das fases de pagamento
-
-As fases são escolhidas através de listas dropdown:
-
-- Adjudicação;
-- Pagamento Intermediário 1;
-- Pagamento Intermediário 2;
-- pagamentos intermediários adicionais;
-- Pagamento Final.
-
-Ao adicionar uma linha, é selecionado automaticamente o próximo pagamento
-intermediário disponível. Uma designação já utilizada fica indisponível nas
-restantes linhas.
-
-
-## Identidade visual
-
-O programa está preparado para utilizar dois ficheiros:
+Colocar as imagens em:
 
 ```text
 assets/branding/logo.jpg
@@ -529,16 +330,139 @@ assets/branding/icon.jpg
 
 ### `logo.jpg`
 
-É apresentado na barra superior e no topo da barra lateral.
+Utilizado:
 
-Recomenda-se uma imagem horizontal, com cerca de 600 × 180 píxeis ou uma
-proporção semelhante.
+- na barra superior;
+- no menu lateral.
+
+Formato recomendado:
+
+```text
+600 × 180 píxeis
+```
 
 ### `icon.jpg`
 
-É utilizado como ícone do separador do navegador e como ícone para atalhos
-em dispositivos móveis.
+Utilizado:
 
-Recomenda-se uma imagem quadrada com 512 × 512 píxeis.
+- como favicon;
+- como ícone de atalho em dispositivos móveis.
 
-Os nomes devem ser exatamente `logo.jpg` e `icon.jpg`, em minúsculas.
+Formato recomendado:
+
+```text
+512 × 512 píxeis
+```
+
+---
+
+## 🔐 Acesso aos Procedimentos
+
+A área de procedimentos utiliza um código visual de acesso.
+
+Código atual:
+
+```text
+2011
+```
+
+> Esta proteção não substitui autenticação real. Como o projeto é estático e publicado no GitHub Pages, os ficheiros continuam tecnicamente acessíveis através dos respetivos endereços públicos.
+
+Não devem ser colocados no repositório:
+
+- dados pessoais;
+- passwords;
+- documentos confidenciais;
+- informação bancária sensível;
+- contratos reservados;
+- dados privados de condóminos.
+
+---
+
+## 🧹 Manutenção
+
+Antes de publicar alterações:
+
+1. validar os ficheiros CSV;
+2. confirmar que os passos estão numerados;
+3. verificar os caminhos das imagens;
+4. testar pesquisa, filtros e categorias;
+5. testar a calculadora;
+6. verificar a versão móvel;
+7. fazer `commit` com uma mensagem clara.
+
+Exemplo:
+
+```bash
+git add .
+git commit -m "Atualiza procedimentos e calculadora"
+git push
+```
+
+---
+
+## 🐛 Resolução de Problemas
+
+### O site aparece sem estilos
+
+Confirmar que este endereço abre corretamente:
+
+```text
+https://SEU-UTILIZADOR.github.io/SEU-REPOSITORIO/styles.css
+```
+
+### Os procedimentos não aparecem
+
+Verificar:
+
+- se o CSV está dentro de `procedimentos/`;
+- se o ficheiro foi adicionado a `procedimentos/index.js`;
+- se as colunas obrigatórias existem;
+- se a coluna `ativo` está definida como `1`;
+- se o nome respeita maiúsculas e minúsculas.
+
+### O GitHub Pages procura a pasta `/docs`
+
+Em:
+
+```text
+Settings → Pages
+```
+
+Selecionar:
+
+```text
+Branch: main
+Folder: /(root)
+```
+
+### O logótipo ou ícone não aparece
+
+Confirmar os caminhos:
+
+```text
+assets/branding/logo.jpg
+assets/branding/icon.jpg
+```
+
+E atualizar a página com:
+
+```text
+Ctrl + F5
+```
+
+---
+
+## 🛠️ Créditos
+
+- Desenvolvido para **Vertis — Gestão de Condomínios**
+- Interface, procedimentos e ferramentas adaptados ao fluxo operacional interno
+- Publicação através de **GitHub Pages**
+
+---
+
+## 📄 Utilização
+
+Este projeto destina-se a utilização interna da Vertis.
+
+A reprodução, distribuição ou adaptação fora do contexto autorizado deve ser previamente aprovada pela administração da empresa.
