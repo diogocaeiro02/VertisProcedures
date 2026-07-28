@@ -501,3 +501,44 @@ Os valores monetários são apresentados no formato:
 ```text
 18.500,00€
 ```
+
+
+## Listas das fases de pagamento
+
+As fases são escolhidas através de listas dropdown:
+
+- Adjudicação;
+- Pagamento Intermediário 1;
+- Pagamento Intermediário 2;
+- pagamentos intermediários adicionais;
+- Pagamento Final.
+
+Ao adicionar uma linha, é selecionado automaticamente o próximo pagamento
+intermediário disponível. Uma designação já utilizada fica indisponível nas
+restantes linhas.
+
+
+## Identidade visual
+
+O programa está preparado para utilizar dois ficheiros:
+
+```text
+assets/branding/logo.jpg
+assets/branding/icon.jpg
+```
+
+### `logo.jpg`
+
+É apresentado na barra superior e no topo da barra lateral.
+
+Recomenda-se uma imagem horizontal, com cerca de 600 × 180 píxeis ou uma
+proporção semelhante.
+
+### `icon.jpg`
+
+É utilizado como ícone do separador do navegador e como ícone para atalhos
+em dispositivos móveis.
+
+Recomenda-se uma imagem quadrada com 512 × 512 píxeis.
+
+Os nomes devem ser exatamente `logo.jpg` e `icon.jpg`, em minúsculas.

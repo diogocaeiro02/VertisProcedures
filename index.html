@@ -4,10 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Portal interno Vertis com procedimentos e ferramentas operacionais">
+  <link rel="icon"
+        type="image/jpeg"
+        href="./assets/branding/icon.jpg?v=2.10.0">
+  <link rel="apple-touch-icon"
+        href="./assets/branding/icon.jpg?v=2.10.0">
   <meta name="theme-color" content="#009846">
   <title>Portal Interno | Vertis</title>
 
-  <link id="mainStylesheet" rel="stylesheet" href="./styles.css?v=2.8.0">
+  <link id="mainStylesheet" rel="stylesheet" href="./styles.css?v=2.10.0">
 
   <style>
     #stylesheetError {
@@ -30,8 +35,8 @@
       }
     }
   </style>
-  <script src="./procedimentos/index.js?v=2.8.0" defer></script>
-  <script src="./app.js?v=2.8.0" defer></script>
+  <script src="./procedimentos/index.js?v=2.10.0" defer></script>
+  <script src="./app.js?v=2.10.0" defer></script>
 
   <script>
     window.addEventListener("DOMContentLoaded", function () {
@@ -76,9 +81,12 @@
       <span></span>
     </button>
 
-    <a class="brand" href="#inicio" aria-label="Vertis — início do manual">
-      <span class="brand-symbol" aria-hidden="true">◉</span>
-      <span class="brand-name">vertis</span>
+    <a class="brand" href="#inicio" aria-label="Vertis — início">
+      <img class="brand-logo"
+           src="./assets/branding/logo.jpg?v=2.10.0"
+           alt="Vertis"
+           width="130"
+           height="40">
     </a>
 
     <div class="topbar-separator"></div>
@@ -101,6 +109,14 @@
 
   <aside id="sidebar" class="sidebar" aria-label="Navegação do manual">
     <div class="sidebar-scroll">
+      <a class="sidebar-brand"
+         href="#inicio"
+         aria-label="Vertis — ir para a visão geral">
+        <img src="./assets/branding/logo.jpg?v=2.10.0"
+             alt="Vertis"
+             width="180"
+             height="54">
+      </a>
       <nav class="primary-navigation">
         <a class="primary-link active" href="#inicio">
           <span class="primary-icon" aria-hidden="true">⌂</span>
@@ -263,9 +279,20 @@
                       <span class="visually-hidden">
                         Designação da fase
                       </span>
-                      <input class="payment-phase-name"
-                             type="text"
-                             value="Adjudicação">
+                      <select class="payment-phase-name">
+                        <option value="Adjudicação" selected>Adjudicação</option>
+                        <option value="Pagamento Intermediário 1">Pagamento Intermediário 1</option>
+                        <option value="Pagamento Intermediário 2">Pagamento Intermediário 2</option>
+                        <option value="Pagamento Intermediário 3">Pagamento Intermediário 3</option>
+                        <option value="Pagamento Intermediário 4">Pagamento Intermediário 4</option>
+                        <option value="Pagamento Intermediário 5">Pagamento Intermediário 5</option>
+                        <option value="Pagamento Intermediário 6">Pagamento Intermediário 6</option>
+                        <option value="Pagamento Intermediário 7">Pagamento Intermediário 7</option>
+                        <option value="Pagamento Intermediário 8">Pagamento Intermediário 8</option>
+                        <option value="Pagamento Intermediário 9">Pagamento Intermediário 9</option>
+                        <option value="Pagamento Intermediário 10">Pagamento Intermediário 10</option>
+                        <option value="Pagamento Final">Pagamento Final</option>
+                      </select>
                     </label>
 
                     <label>
@@ -296,9 +323,20 @@
                       <span class="visually-hidden">
                         Designação da fase
                       </span>
-                      <input class="payment-phase-name"
-                             type="text"
-                             value="Pagamento intermédio">
+                      <select class="payment-phase-name">
+                        <option value="Adjudicação">Adjudicação</option>
+                        <option value="Pagamento Intermediário 1" selected>Pagamento Intermediário 1</option>
+                        <option value="Pagamento Intermediário 2">Pagamento Intermediário 2</option>
+                        <option value="Pagamento Intermediário 3">Pagamento Intermediário 3</option>
+                        <option value="Pagamento Intermediário 4">Pagamento Intermediário 4</option>
+                        <option value="Pagamento Intermediário 5">Pagamento Intermediário 5</option>
+                        <option value="Pagamento Intermediário 6">Pagamento Intermediário 6</option>
+                        <option value="Pagamento Intermediário 7">Pagamento Intermediário 7</option>
+                        <option value="Pagamento Intermediário 8">Pagamento Intermediário 8</option>
+                        <option value="Pagamento Intermediário 9">Pagamento Intermediário 9</option>
+                        <option value="Pagamento Intermediário 10">Pagamento Intermediário 10</option>
+                        <option value="Pagamento Final">Pagamento Final</option>
+                      </select>
                     </label>
 
                     <label>
@@ -329,9 +367,20 @@
                       <span class="visually-hidden">
                         Designação da fase
                       </span>
-                      <input class="payment-phase-name"
-                             type="text"
-                             value="Pagamento final">
+                      <select class="payment-phase-name">
+                        <option value="Adjudicação">Adjudicação</option>
+                        <option value="Pagamento Intermediário 1">Pagamento Intermediário 1</option>
+                        <option value="Pagamento Intermediário 2">Pagamento Intermediário 2</option>
+                        <option value="Pagamento Intermediário 3">Pagamento Intermediário 3</option>
+                        <option value="Pagamento Intermediário 4">Pagamento Intermediário 4</option>
+                        <option value="Pagamento Intermediário 5">Pagamento Intermediário 5</option>
+                        <option value="Pagamento Intermediário 6">Pagamento Intermediário 6</option>
+                        <option value="Pagamento Intermediário 7">Pagamento Intermediário 7</option>
+                        <option value="Pagamento Intermediário 8">Pagamento Intermediário 8</option>
+                        <option value="Pagamento Intermediário 9">Pagamento Intermediário 9</option>
+                        <option value="Pagamento Intermediário 10">Pagamento Intermediário 10</option>
+                        <option value="Pagamento Final" selected>Pagamento Final</option>
+                      </select>
                     </label>
 
                     <label>
@@ -496,7 +545,7 @@
               <button class="copy-template-button"
                       type="button"
                       data-copy-budget-template="intermediate">
-                Pagamento intermédio
+                Pagamento Intermediário
               </button>
 
               <button class="copy-template-button"

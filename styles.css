@@ -2854,3 +2854,196 @@ body.modal-open {
     align-self: center;
   }
 }
+
+
+/* ==========================================================
+   Grelhas e dropdowns das fases — v2.9
+   ========================================================== */
+
+.phase-editor-head,
+.phase-editor-row,
+.vat-editor-head,
+.vat-editor-row {
+  grid-template-columns:
+    minmax(0, 1.45fr)
+    minmax(86px, 0.65fr)
+    36px;
+}
+
+.phase-editor-row > label,
+.vat-editor-row > label {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.phase-editor-row .percentage-input,
+.vat-editor-row .percentage-input {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.phase-editor-row .percentage-input input,
+.vat-editor-row .percentage-input input {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.payment-phase-name {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  height: 37px;
+  box-sizing: border-box;
+  padding: 0 34px 0 10px;
+  border: 1px solid #d4dbd7;
+  border-radius: 4px;
+  color: var(--text-dark);
+  background-color: #ffffff;
+  outline: 0;
+  font-size: 10px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+}
+
+.payment-phase-name:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(0, 152, 70, 0.08);
+}
+
+.phase-remove-button,
+.vat-remove-button {
+  position: relative;
+  z-index: 2;
+  justify-self: end;
+}
+
+@media (max-width: 720px) {
+  .phase-editor-head,
+  .phase-editor-row,
+  .vat-editor-head,
+  .vat-editor-row {
+    grid-template-columns:
+      minmax(0, 1.3fr)
+      minmax(78px, 0.7fr)
+      34px;
+  }
+}
+
+@media (max-width: 430px) {
+  .phase-editor-row {
+    grid-template-columns: minmax(0, 1fr) 34px;
+  }
+
+  .vat-editor-head {
+    display: none;
+  }
+
+  .vat-editor-row {
+    grid-template-columns: minmax(0, 1fr) 34px;
+    gap: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .vat-editor-row > label {
+    grid-column: 1;
+  }
+
+  .vat-editor-row .vat-remove-button {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+}
+
+
+/* ==========================================================
+   Identidade visual Vertis — v2.10
+   ========================================================== */
+
+.brand {
+  display: flex;
+  min-width: 150px;
+  height: var(--topbar-height);
+  flex: 0 0 150px;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.brand-logo {
+  display: block;
+  width: auto;
+  max-width: 126px;
+  height: 34px;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+.sidebar-brand {
+  display: flex;
+  min-height: 78px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 12px 10px;
+  padding: 12px;
+  border-bottom: 1px solid var(--line-soft);
+  text-decoration: none;
+}
+
+.sidebar-brand img {
+  display: block;
+  width: auto;
+  max-width: 170px;
+  max-height: 50px;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+@media (max-width: 720px) {
+  .brand {
+    min-width: 108px;
+    flex-basis: 108px;
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  .brand-logo {
+    max-width: 94px;
+    height: 30px;
+  }
+
+  .sidebar-brand {
+    min-height: 70px;
+  }
+
+  .sidebar-brand img {
+    max-width: 152px;
+    max-height: 44px;
+  }
+}
+
+@media (max-width: 430px) {
+  .brand {
+    min-width: 88px;
+    flex-basis: 88px;
+  }
+
+  .brand-logo {
+    max-width: 76px;
+    height: 27px;
+  }
+}
+
+@media print {
+  .brand-logo,
+  .sidebar-brand {
+    display: none !important;
+  }
+}

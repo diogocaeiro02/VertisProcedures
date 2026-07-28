@@ -398,10 +398,135 @@ function normalizeLabel(value) {
 
 
 /**
+ * Calcula quantos pagamentos intermediários devem aparecer na lista.
+ */
+function getPaymentIntermediateLimit(extraName = "") {
+  const names = [
+    ...elements.paymentPhaseRows.querySelectorAll(
+      ".payment-phase-name"
+    )
+  ]
+    .map(select => select.value)
+    .concat(extraName);
+
+  const highestExistingNumber = names.reduce(
+    (highest, name) => {
+      const match = normalizeLabel(name).match(
+        /pagamento intermediario\s+(\d+)/
+      );
+
+      return match
+        ? Math.max(highest, Number(match[1]))
+        : highest;
+    },
+    0
+  );
+
+  const rowCount = elements.paymentPhaseRows
+    .querySelectorAll(".phase-editor-row").length;
+
+  return Math.max(
+    10,
+    highestExistingNumber + 3,
+    rowCount + 5
+  );
+}
+
+
+/**
+ * Devolve as designações disponíveis para uma fase.
+ */
+function getPaymentPhaseOptionNames(selectedName = "") {
+  const names = ["Adjudicação"];
+  const limit = getPaymentIntermediateLimit(selectedName);
+
+  for (let number = 1; number <= limit; number += 1) {
+    names.push(`Pagamento Intermediário ${number}`);
+  }
+
+  names.push("Pagamento Final");
+
+  if (selectedName && !names.includes(selectedName)) {
+    names.splice(names.length - 1, 0, selectedName);
+  }
+
+  return names;
+}
+
+
+/**
+ * Gera as opções da lista de designações.
+ */
+function renderPaymentPhaseOptions(selectedName) {
+  return getPaymentPhaseOptionNames(selectedName)
+    .map(name => `
+      <option value="${escapeHtml(name)}"
+              ${name === selectedName ? "selected" : ""}>
+        ${escapeHtml(name)}
+      </option>
+    `)
+    .join("");
+}
+
+
+/**
+ * Impede designações repetidas nas várias linhas.
+ */
+function refreshPaymentPhaseOptions() {
+  const selects = [
+    ...elements.paymentPhaseRows.querySelectorAll(
+      ".payment-phase-name"
+    )
+  ];
+
+  const selectedNames = selects.map(select => select.value);
+
+  selects.forEach((select, selectIndex) => {
+    const currentName = selectedNames[selectIndex];
+
+    select.innerHTML = renderPaymentPhaseOptions(currentName);
+    select.value = currentName;
+
+    [...select.options].forEach(option => {
+      option.disabled = selectedNames.some(
+        (selectedName, selectedIndex) =>
+          selectedIndex !== selectIndex &&
+          selectedName === option.value
+      );
+    });
+  });
+}
+
+
+/**
+ * Escolhe o próximo pagamento intermediário disponível.
+ */
+function getNextPaymentPhaseName() {
+  const usedNames = new Set(
+    [
+      ...elements.paymentPhaseRows.querySelectorAll(
+        ".payment-phase-name"
+      )
+    ].map(select => select.value)
+  );
+
+  let number = 1;
+
+  while (
+    usedNames.has(`Pagamento Intermediário ${number}`)
+  ) {
+    number += 1;
+  }
+
+  return `Pagamento Intermediário ${number}`;
+}
+
+
+/**
  * Cria uma linha editável de fase de pagamento.
  */
 function createPaymentPhaseRow(
-  name = "Nova fase",
+  name = "Pagamento Intermediário 1",
   percentage = 0
 ) {
   const row = document.createElement("div");
@@ -412,9 +537,9 @@ function createPaymentPhaseRow(
       <span class="visually-hidden">
         Designação da fase
       </span>
-      <input class="payment-phase-name"
-             type="text"
-             value="${escapeHtml(name)}">
+      <select class="payment-phase-name">
+        ${renderPaymentPhaseOptions(name)}
+      </select>
     </label>
 
     <label>
@@ -771,9 +896,11 @@ function resetBudgetCalculator() {
   elements.paymentPhaseRows.innerHTML = "";
   elements.paymentPhaseRows.append(
     createPaymentPhaseRow("Adjudicação", 40),
-    createPaymentPhaseRow("Pagamento intermédio", 30),
-    createPaymentPhaseRow("Pagamento final", 30)
+    createPaymentPhaseRow("Pagamento Intermediário 1", 30),
+    createPaymentPhaseRow("Pagamento Final", 30)
   );
+
+  refreshPaymentPhaseOptions();
 
   elements.vatRows.innerHTML = "";
   elements.vatRows.append(
@@ -857,7 +984,7 @@ function buildBudgetTemplate(type) {
       : "X€";
 
     return [
-      "Pagamento Intermédio",
+      "Pagamento Intermediário",
       "",
       "Intervenção:",
       "Fornecedor: (nosso fornecedor)",
@@ -1835,7 +1962,7 @@ async function loadProcedures() {
 
       try {
         response = await fetch(
-          `./procedimentos/${encodeURIComponent(filename)}?v=2.8.0`,
+          `./procedimentos/${encodeURIComponent(filename)}?v=2.9.0`,
           { cache: "no-store" }
         );
       } catch {
@@ -2209,9 +2336,13 @@ elements.budgetAmount.addEventListener("blur", () => {
 elements.addPaymentPhaseButton.addEventListener(
   "click",
   () => {
+    const nextPhaseName = getNextPaymentPhaseName();
+
     elements.paymentPhaseRows.append(
-      createPaymentPhaseRow("Nova fase", 0)
+      createPaymentPhaseRow(nextPhaseName, 0)
     );
+
+    refreshPaymentPhaseOptions();
 
     elements.paymentPhaseRows
       .lastElementChild
@@ -2231,6 +2362,10 @@ elements.paymentPhaseRows.addEventListener(
         ".payment-phase-percentage"
       )
     ) {
+      if (event.target.matches(".payment-phase-name")) {
+        refreshPaymentPhaseOptions();
+      }
+
       calculateBudget();
     }
   }
@@ -2257,6 +2392,7 @@ elements.paymentPhaseRows.addEventListener(
     }
 
     removeButton.closest(".phase-editor-row")?.remove();
+    refreshPaymentPhaseOptions();
     calculateBudget();
   }
 );
@@ -2368,6 +2504,7 @@ window.addEventListener("resize", () => {
 syncSidebarWithViewport();
 syncProceduresAccessUi();
 updatePrimaryNavigationFromScroll();
+refreshPaymentPhaseOptions();
 calculateBudget();
 loadProcedures().then(() => {
   const hash = window.location.hash;
