@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal interno Vertis com procedimentos e ferramentas operacionais">
+  <meta name="theme-color" content="#009846">
+  <title>Portal Interno | Vertis</title>
+
+  <link id="mainStylesheet" rel="stylesheet" href="./styles.css?v=2.8.0">
+
+  <style>
+    #stylesheetError {
+      display: none;
+      margin: 64px 12px 12px 256px;
+      padding: 12px 14px;
+      border: 1px solid #d59c00;
+      background: #fff7dc;
+      color: #624900;
+      font: 14px/1.5 Arial, sans-serif;
+    }
+
+    html.stylesheet-failed #stylesheetError {
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      #stylesheetError {
+        margin-left: 12px;
+      }
+    }
+  </style>
+  <script src="./procedimentos/index.js?v=2.8.0" defer></script>
+  <script src="./app.js?v=2.8.0" defer></script>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      var stylesheet = document.getElementById("mainStylesheet");
+
+      if (stylesheet) {
+        stylesheet.addEventListener("error", function () {
+          document.documentElement.classList.add("stylesheet-failed");
+        });
+      }
+
+      window.setTimeout(function () {
+        var topbar = document.querySelector(".topbar");
+
+        if (
+          topbar &&
+          window.getComputedStyle(topbar).position !== "fixed"
+        ) {
+          document.documentElement.classList.add("stylesheet-failed");
+        }
+      }, 700);
+    });
+  </script>
+
+</head>
+
+<body>
+  <div id="stylesheetError" role="alert">
+    <strong>O ficheiro de estilos não foi carregado.</strong>
+    Confirme que <code>styles.css</code> está na mesma pasta que
+    <code>index.html</code> na origem publicada pelo GitHub Pages.
+  </div>
+  <header class="topbar">
+    <button id="menuButton"
+            class="icon-button menu-button"
+            type="button"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="sidebar">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <a class="brand" href="#inicio" aria-label="Vertis — início do manual">
+      <span class="brand-symbol" aria-hidden="true">◉</span>
+      <span class="brand-name">vertis</span>
+    </a>
+
+    <div class="topbar-separator"></div>
+
+    <div class="breadcrumb" aria-label="Localização">
+      <span>Gestão de Condomínios</span>
+      <span class="breadcrumb-divider">/</span>
+      <strong id="breadcrumbCurrent">Visão geral</strong>
+    </div>
+
+    <div class="topbar-actions">
+      <span id="loadStatus" class="load-status" aria-live="polite">
+        A carregar…
+      </span>
+
+    </div>
+  </header>
+
+  <div id="sidebarOverlay" class="sidebar-overlay" hidden></div>
+
+  <aside id="sidebar" class="sidebar" aria-label="Navegação do manual">
+    <div class="sidebar-scroll">
+      <nav class="primary-navigation">
+        <a class="primary-link active" href="#inicio">
+          <span class="primary-icon" aria-hidden="true">⌂</span>
+          <span>Visão geral</span>
+        </a>
+
+        <a class="primary-link" href="#ferramentas">
+          <span class="primary-icon" aria-hidden="true">⌗</span>
+          <span>Ferramentas</span>
+        </a>
+
+        <a class="primary-link" href="#procedimentos" data-protected-link="true">
+          <span class="primary-icon" aria-hidden="true">▦</span>
+          <span>Procedimentos</span>
+          <span id="proceduresNavLock" class="navigation-lock" aria-hidden="true">●</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-section" data-protected-sidebar="true">
+        <div class="sidebar-heading">
+          <span>Categorias</span>
+          <span id="categoryCount" class="sidebar-count">0</span>
+        </div>
+
+        <nav id="categoryNavigation" class="secondary-navigation">
+          <div class="sidebar-placeholder">A carregar categorias…</div>
+        </nav>
+      </div>
+
+      <div class="sidebar-section" data-protected-sidebar="true">
+        <div class="sidebar-heading">
+          <span>Neste manual</span>
+          <span id="sidebarProcedureCount" class="sidebar-count">0</span>
+        </div>
+
+        <nav id="procedureNavigation" class="procedure-navigation">
+          <div class="sidebar-placeholder">A carregar procedimentos…</div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <span>Manual interno</span>
+      <strong>Vertis</strong>
+    </div>
+  </aside>
+
+  <main class="workspace">
+    <section id="inicio" class="overview-section">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Portal interno</p>
+          <h1>Manual e Ferramentas</h1>
+          <p class="page-introduction">
+            Consulte os procedimentos operacionais e utilize ferramentas de
+            apoio à gestão diária dos condomínios.
+          </p>
+        </div>
+      </div>
+
+      <div class="overview-grid">
+        <article class="overview-card overview-card-highlight">
+          <div>
+            <span class="overview-label">Procedimentos disponíveis</span>
+            <strong id="procedureCount">0</strong>
+          </div>
+          <span class="overview-icon" aria-hidden="true">▤</span>
+        </article>
+
+        <article class="overview-card">
+          <div>
+            <span class="overview-label">Passos documentados</span>
+            <strong id="stepCount">0</strong>
+          </div>
+          <span class="overview-icon" aria-hidden="true">✓</span>
+        </article>
+
+        <article class="overview-card">
+          <div>
+            <span class="overview-label">Categorias</span>
+            <strong id="overviewCategoryCount">0</strong>
+          </div>
+          <span class="overview-icon" aria-hidden="true">▦</span>
+        </article>
+      </div>
+    </section>
+
+
+    <section id="ferramentas" class="tools-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Apoio à gestão</p>
+          <h2>Ferramentas</h2>
+        </div>
+
+        <p class="results-summary">Cálculos rápidos e consistentes</p>
+      </div>
+
+      <article class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon" aria-hidden="true">€</div>
+
+          <div>
+            <span class="tool-kicker">Financeiro</span>
+            <h3>Calculadora de Orçamentos</h3>
+            <p>
+              Calcula o total com IVA e distribui o pagamento por adjudicação,
+              pagamento intermédio e pagamento final.
+            </p>
+          </div>
+        </div>
+
+        <div class="budget-calculator">
+          <form id="budgetCalculatorForm"
+                class="calculator-form"
+                autocomplete="off"
+                novalidate>
+            <div class="calculator-form-heading">
+              <h4>Dados do orçamento</h4>
+              <span>
+                O valor deve ser introduzido sem IVA. As fases e a
+                distribuição do IVA devem totalizar 100%.
+              </span>
+            </div>
+
+            <label class="calculator-field calculator-field-wide">
+              <span>Valor do orçamento sem IVA</span>
+              <div class="currency-input">
+                <input id="budgetAmount"
+                       type="text"
+                       inputmode="decimal"
+                       value="10.000,00"
+                       aria-describedby="calculatorMessage">
+                <span>€</span>
+              </div>
+            </label>
+
+            <fieldset class="calculator-group">
+              <div class="calculator-group-heading">
+                <legend>Fases de pagamento</legend>
+
+                <button id="addPaymentPhaseButton"
+                        class="mini-action-button"
+                        type="button">
+                  + Adicionar fase
+                </button>
+              </div>
+
+              <div class="phase-editor-table">
+                <div class="phase-editor-head">
+                  <span>Designação</span>
+                  <span>Percentagem</span>
+                  <span></span>
+                </div>
+
+                <div id="paymentPhaseRows"
+                     class="phase-editor-rows">
+                  <div class="phase-editor-row">
+                    <label>
+                      <span class="visually-hidden">
+                        Designação da fase
+                      </span>
+                      <input class="payment-phase-name"
+                             type="text"
+                             value="Adjudicação">
+                    </label>
+
+                    <label>
+                      <span class="visually-hidden">
+                        Percentagem da fase
+                      </span>
+                      <div class="percentage-input">
+                        <input class="payment-phase-percentage"
+                               type="number"
+                               min="0"
+                               max="100"
+                               step="0.01"
+                               value="40">
+                        <span>%</span>
+                      </div>
+                    </label>
+
+                    <button class="phase-remove-button"
+                            type="button"
+                            data-remove-payment-phase
+                            aria-label="Remover fase de pagamento">
+                      ×
+                    </button>
+                  </div>
+
+                  <div class="phase-editor-row">
+                    <label>
+                      <span class="visually-hidden">
+                        Designação da fase
+                      </span>
+                      <input class="payment-phase-name"
+                             type="text"
+                             value="Pagamento intermédio">
+                    </label>
+
+                    <label>
+                      <span class="visually-hidden">
+                        Percentagem da fase
+                      </span>
+                      <div class="percentage-input">
+                        <input class="payment-phase-percentage"
+                               type="number"
+                               min="0"
+                               max="100"
+                               step="0.01"
+                               value="30">
+                        <span>%</span>
+                      </div>
+                    </label>
+
+                    <button class="phase-remove-button"
+                            type="button"
+                            data-remove-payment-phase
+                            aria-label="Remover fase de pagamento">
+                      ×
+                    </button>
+                  </div>
+
+                  <div class="phase-editor-row">
+                    <label>
+                      <span class="visually-hidden">
+                        Designação da fase
+                      </span>
+                      <input class="payment-phase-name"
+                             type="text"
+                             value="Pagamento final">
+                    </label>
+
+                    <label>
+                      <span class="visually-hidden">
+                        Percentagem da fase
+                      </span>
+                      <div class="percentage-input">
+                        <input class="payment-phase-percentage"
+                               type="number"
+                               min="0"
+                               max="100"
+                               step="0.01"
+                               value="30">
+                        <span>%</span>
+                      </div>
+                    </label>
+
+                    <button class="phase-remove-button"
+                            type="button"
+                            data-remove-payment-phase
+                            aria-label="Remover fase de pagamento">
+                      ×
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="calculator-total-line">
+                <span>Total das fases</span>
+                <strong id="paymentPercentageTotal">100%</strong>
+              </div>
+            </fieldset>
+
+            <fieldset class="calculator-group">
+              <div class="calculator-group-heading">
+                <legend>Distribuição do IVA</legend>
+
+                <button id="addVatRowButton"
+                        class="mini-action-button"
+                        type="button">
+                  + Adicionar taxa
+                </button>
+              </div>
+
+              <div class="vat-editor-table">
+                <div class="vat-editor-head">
+                  <span>Taxa de IVA</span>
+                  <span>% da base</span>
+                  <span></span>
+                </div>
+
+                <div id="vatRows" class="vat-editor-rows">
+                  <div class="vat-editor-row">
+                    <label>
+                      <span class="visually-hidden">Taxa de IVA</span>
+                      <div class="percentage-input">
+                        <input class="vat-rate"
+                               type="number"
+                               min="0"
+                               max="100"
+                               step="0.01"
+                               value="6">
+                        <span>%</span>
+                      </div>
+                    </label>
+
+                    <label>
+                      <span class="visually-hidden">
+                        Percentagem da base
+                      </span>
+                      <div class="percentage-input">
+                        <input class="vat-allocation"
+                               type="number"
+                               min="0"
+                               max="100"
+                               step="0.01"
+                               value="70">
+                        <span>%</span>
+                      </div>
+                    </label>
+
+                    <button class="vat-remove-button"
+                            type="button"
+                            data-remove-vat-row
+                            aria-label="Remover taxa de IVA">
+                      ×
+                    </button>
+                  </div>
+
+                  <div class="vat-editor-row">
+                    <label>
+                      <span class="visually-hidden">Taxa de IVA</span>
+                      <div class="percentage-input">
+                        <input class="vat-rate"
+                               type="number"
+                               min="0"
+                               max="100"
+                               step="0.01"
+                               value="23">
+                        <span>%</span>
+                      </div>
+                    </label>
+
+                    <label>
+                      <span class="visually-hidden">
+                        Percentagem da base
+                      </span>
+                      <div class="percentage-input">
+                        <input class="vat-allocation"
+                               type="number"
+                               min="0"
+                               max="100"
+                               step="0.01"
+                               value="30">
+                        <span>%</span>
+                      </div>
+                    </label>
+
+                    <button class="vat-remove-button"
+                            type="button"
+                            data-remove-vat-row
+                            aria-label="Remover taxa de IVA">
+                      ×
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="calculator-total-line">
+                <span>Total da distribuição de IVA</span>
+                <strong id="vatAllocationTotal">100%</strong>
+              </div>
+            </fieldset>
+
+            <div id="calculatorMessage"
+                 class="calculator-message"
+                 aria-live="polite"></div>
+
+            <button id="resetBudgetCalculator"
+                    class="button button-muted calculator-reset"
+                    type="button">
+              Repor valores
+            </button>
+          </form>
+
+          <div class="calculator-results">
+            <div class="calculator-results-header">
+              <div>
+                <span class="tool-kicker">Resultado</span>
+                <h4>Resumo do orçamento</h4>
+              </div>
+            </div>
+
+            <div class="copy-template-actions"
+                 aria-label="Modelos para copiar">
+              <button class="copy-template-button"
+                      type="button"
+                      data-copy-budget-template="award">
+                Pagamento da adjudicação
+              </button>
+
+              <button class="copy-template-button"
+                      type="button"
+                      data-copy-budget-template="intermediate">
+                Pagamento intermédio
+              </button>
+
+              <button class="copy-template-button"
+                      type="button"
+                      data-copy-budget-template="final">
+                Pagamento final
+              </button>
+
+              <button class="copy-template-button copy-template-primary"
+                      type="button"
+                      data-copy-budget-template="budget">
+                Orçamentação
+              </button>
+            </div>
+
+            <div class="calculator-total-grid">
+              <div class="calculator-total-card">
+                <span>Base sem IVA</span>
+                <strong id="baseAmountResult">0,00€</strong>
+              </div>
+
+              <div class="calculator-total-card">
+                <span>IVA total</span>
+                <strong id="vatAmountResult">0,00€</strong>
+              </div>
+
+              <div class="calculator-total-card calculator-total-highlight">
+                <span>Total com IVA</span>
+                <strong id="totalAmountResult">0,00€</strong>
+              </div>
+            </div>
+
+            <div id="paymentSplit"
+                 class="payment-split"
+                 aria-label="Divisão do pagamento"></div>
+
+            <div class="payment-table-wrapper">
+              <table class="payment-table">
+                <thead>
+                  <tr>
+                    <th>Fase</th>
+                    <th>Percentagem</th>
+                    <th>Base</th>
+                    <th>IVA</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody id="paymentBreakdownBody"></tbody>
+              </table>
+            </div>
+
+            <details class="vat-breakdown" open>
+              <summary>Detalhe do IVA</summary>
+
+              <div class="payment-table-wrapper vat-results-wrapper">
+                <table class="payment-table vat-results-table">
+                  <thead>
+                    <tr>
+                      <th>Taxa</th>
+                      <th>% da base</th>
+                      <th>Base tributável</th>
+                      <th>IVA</th>
+                    </tr>
+                  </thead>
+                  <tbody id="vatBreakdownBody"></tbody>
+                </table>
+              </div>
+            </details>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="procedimentos" class="procedures-section">
+      <div class="section-heading procedures-section-heading">
+        <div>
+          <p class="eyebrow">Consulta reservada</p>
+          <h2>Procedimentos</h2>
+        </div>
+
+        <div class="procedures-heading-side">
+          <p id="resultsSummary"
+             class="results-summary"
+             aria-live="polite">
+            Acesso protegido
+          </p>
+
+          <div id="proceduresHeadingActions"
+               class="procedures-heading-actions"
+               hidden>
+            <button id="expandAllButton"
+                    class="button button-secondary"
+                    type="button">
+              Expandir todos
+            </button>
+
+            <button id="collapseAllButton"
+                    class="button button-muted"
+                    type="button">
+              Recolher todos
+            </button>
+
+            <button id="lockProceduresButton"
+                    class="button button-lock"
+                    type="button">
+              Bloquear
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="proceduresLockScreen" class="access-gate">
+        <div class="access-gate-icon" aria-hidden="true">⌁</div>
+        <span class="tool-kicker">Acesso reservado</span>
+        <h3>Procedimentos protegidos</h3>
+        <p>
+          Introduza o código de acesso para consultar o manual de
+          procedimentos.
+        </p>
+
+        <button id="openAccessButton"
+                class="button button-primary access-gate-button"
+                type="button">
+          Introduzir código
+        </button>
+      </div>
+
+      <div id="proceduresProtectedContent" hidden>
+        <div class="filter-panel" role="search">
+          <label class="field search-field">
+            <span>Pesquisar</span>
+            <div class="input-with-icon">
+              <span aria-hidden="true">⌕</span>
+              <input id="searchInput"
+                     type="search"
+                     autocomplete="off"
+                     placeholder="Título, objetivo, responsável, passo ou documento">
+            </div>
+          </label>
+
+          <label class="field">
+            <span>Categoria</span>
+            <select id="categoryFilter">
+              <option value="">Todas as categorias</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Ordenação</span>
+            <select id="sortSelect">
+              <option value="order">Ordem do manual</option>
+              <option value="title">Título A–Z</option>
+              <option value="review">Revisão mais recente</option>
+            </select>
+          </label>
+
+          <button id="clearFiltersButton"
+                  class="button button-muted filter-clear"
+                  type="button">
+            Limpar filtros
+          </button>
+        </div>
+
+        <div id="messageBox" class="message-box" hidden></div>
+
+        <div id="manualContent" class="manual-content">
+          <div class="loading-state" role="status">
+            <span class="loading-spinner" aria-hidden="true"></span>
+            <strong>A carregar o manual…</strong>
+            <span>Os procedimentos estão a ser preparados.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <span>Vertis — Gestão de Condomínios</span>
+      <button id="backToTopButton" type="button">Voltar ao topo ↑</button>
+    </footer>
+  </main>
+  <div id="accessModal"
+       class="access-modal"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="accessModalTitle"
+       hidden>
+    <button class="access-modal-backdrop"
+            type="button"
+            data-close-access="true"
+            aria-label="Fechar"></button>
+
+    <div class="access-modal-dialog">
+      <button class="access-modal-close"
+              type="button"
+              data-close-access="true"
+              aria-label="Fechar">
+        ×
+      </button>
+
+      <div class="access-modal-icon" aria-hidden="true">⌁</div>
+      <span class="tool-kicker">Acesso reservado</span>
+      <h2 id="accessModalTitle">Código dos procedimentos</h2>
+      <p>
+        Introduza o código de quatro dígitos para continuar.
+      </p>
+
+      <form id="accessForm" novalidate>
+        <label class="access-code-field">
+          <span>Código de acesso</span>
+          <input id="accessCodeInput"
+                 type="password"
+                 inputmode="numeric"
+                 pattern="[0-9]*"
+                 maxlength="4"
+                 autocomplete="off"
+                 aria-describedby="accessError">
+        </label>
+
+        <div id="accessError"
+             class="access-error"
+             aria-live="polite"></div>
+
+        <div class="access-modal-actions">
+          <button class="button button-muted"
+                  type="button"
+                  data-close-access="true">
+            Cancelar
+          </button>
+
+          <button id="unlockProceduresButton"
+                  class="button button-primary"
+                  type="submit">
+            Desbloquear
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
