@@ -3047,3 +3047,143 @@ body.modal-open {
     display: none !important;
   }
 }
+
+
+/* ==========================================================
+   Alinhamento das fases de pagamento — v2.11
+   ========================================================== */
+
+.phase-editor-row {
+  align-items: center;
+}
+
+.phase-editor-row > label {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  margin: 0;
+}
+
+.phase-name-field,
+.phase-percentage-field {
+  width: 100%;
+}
+
+.payment-phase-name,
+.phase-editor-row .percentage-input,
+.phase-editor-row .percentage-input input {
+  height: 40px;
+}
+
+.payment-phase-name {
+  display: block;
+  line-height: 40px;
+}
+
+.phase-editor-row .percentage-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.phase-editor-row .percentage-input input {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 40px;
+}
+
+.phase-editor-row .percentage-input > span {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.phase-remove-button {
+  align-self: center;
+  margin: 0;
+}
+
+@media (max-width: 430px) {
+  .phase-editor-row {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(82px, 0.55fr)
+      34px;
+  }
+
+  .phase-editor-row > label {
+    grid-column: auto;
+  }
+
+  .phase-editor-row .phase-remove-button {
+    grid-column: auto;
+    grid-row: auto;
+    align-self: center;
+  }
+}
+
+
+/* ==========================================================
+   Limpeza visual da distribuição do IVA — v2.12
+   ========================================================== */
+
+.vat-editor-row {
+  align-items: center;
+}
+
+.vat-editor-row > label {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  margin: 0;
+}
+
+.vat-rate-field,
+.vat-allocation-field {
+  width: 100%;
+}
+
+.vat-editor-row .percentage-input,
+.vat-editor-row .percentage-input input {
+  height: 40px;
+}
+
+.vat-editor-row .percentage-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.vat-editor-row .percentage-input input {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 40px;
+}
+
+.vat-editor-row .percentage-input > span {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.vat-remove-button {
+  align-self: center;
+  margin: 0;
+}
+
+@media (max-width: 430px) {
+  .vat-editor-row {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(82px, 0.55fr)
+      34px;
+  }
+
+  .vat-editor-row > label {
+    grid-column: auto;
+  }
+
+  .vat-editor-row .vat-remove-button {
+    grid-column: auto;
+    grid-row: auto;
+    align-self: center;
+  }
+}

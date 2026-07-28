@@ -533,19 +533,14 @@ function createPaymentPhaseRow(
   row.className = "phase-editor-row";
 
   row.innerHTML = `
-    <label>
-      <span class="visually-hidden">
-        Designação da fase
-      </span>
-      <select class="payment-phase-name">
+    <label class="phase-name-field">
+      <select class="payment-phase-name"
+              aria-label="Designação da fase">
         ${renderPaymentPhaseOptions(name)}
       </select>
     </label>
 
-    <label>
-      <span class="visually-hidden">
-        Percentagem da fase
-      </span>
+    <label class="phase-percentage-field">
       <div class="percentage-input">
         <input class="payment-phase-percentage"
                type="number"
@@ -577,10 +572,10 @@ function createVatRow(rate = 0, allocation = 0) {
   row.className = "vat-editor-row";
 
   row.innerHTML = `
-    <label>
-      <span class="visually-hidden">Taxa de IVA</span>
+    <label class="vat-rate-field">
       <div class="percentage-input">
         <input class="vat-rate"
+               aria-label="Taxa de IVA"
                type="number"
                min="0"
                max="100"
@@ -590,12 +585,10 @@ function createVatRow(rate = 0, allocation = 0) {
       </div>
     </label>
 
-    <label>
-      <span class="visually-hidden">
-        Percentagem da base
-      </span>
+    <label class="vat-allocation-field">
       <div class="percentage-input">
         <input class="vat-allocation"
+               aria-label="Percentagem da base"
                type="number"
                min="0"
                max="100"

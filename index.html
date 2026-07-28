@@ -6,13 +6,13 @@
   <meta name="description" content="Portal interno Vertis com procedimentos e ferramentas operacionais">
   <link rel="icon"
         type="image/jpeg"
-        href="./assets/branding/icon.jpg?v=2.10.0">
+        href="./assets/branding/icon.jpg?v=2.12.0">
   <link rel="apple-touch-icon"
-        href="./assets/branding/icon.jpg?v=2.10.0">
+        href="./assets/branding/icon.jpg?v=2.12.0">
   <meta name="theme-color" content="#009846">
   <title>Portal Interno | Vertis</title>
 
-  <link id="mainStylesheet" rel="stylesheet" href="./styles.css?v=2.10.0">
+  <link id="mainStylesheet" rel="stylesheet" href="./styles.css?v=2.12.0">
 
   <style>
     #stylesheetError {
@@ -35,8 +35,8 @@
       }
     }
   </style>
-  <script src="./procedimentos/index.js?v=2.10.0" defer></script>
-  <script src="./app.js?v=2.10.0" defer></script>
+  <script src="./procedimentos/index.js?v=2.12.0" defer></script>
+  <script src="./app.js?v=2.12.0" defer></script>
 
   <script>
     window.addEventListener("DOMContentLoaded", function () {
@@ -83,7 +83,7 @@
 
     <a class="brand" href="#inicio" aria-label="Vertis — início">
       <img class="brand-logo"
-           src="./assets/branding/logo.jpg?v=2.10.0"
+           src="./assets/branding/logo.jpg?v=2.12.0"
            alt="Vertis"
            width="130"
            height="40">
@@ -112,7 +112,7 @@
       <a class="sidebar-brand"
          href="#inicio"
          aria-label="Vertis — ir para a visão geral">
-        <img src="./assets/branding/logo.jpg?v=2.10.0"
+        <img src="./assets/branding/logo.jpg?v=2.12.0"
              alt="Vertis"
              width="180"
              height="54">
@@ -275,10 +275,7 @@
                 <div id="paymentPhaseRows"
                      class="phase-editor-rows">
                   <div class="phase-editor-row">
-                    <label>
-                      <span class="visually-hidden">
-                        Designação da fase
-                      </span>
+                    <label class="phase-name-field">
                       <select class="payment-phase-name">
                         <option value="Adjudicação" selected>Adjudicação</option>
                         <option value="Pagamento Intermediário 1">Pagamento Intermediário 1</option>
@@ -295,10 +292,7 @@
                       </select>
                     </label>
 
-                    <label>
-                      <span class="visually-hidden">
-                        Percentagem da fase
-                      </span>
+                    <label class="phase-percentage-field">
                       <div class="percentage-input">
                         <input class="payment-phase-percentage"
                                type="number"
@@ -319,10 +313,7 @@
                   </div>
 
                   <div class="phase-editor-row">
-                    <label>
-                      <span class="visually-hidden">
-                        Designação da fase
-                      </span>
+                    <label class="phase-name-field">
                       <select class="payment-phase-name">
                         <option value="Adjudicação">Adjudicação</option>
                         <option value="Pagamento Intermediário 1" selected>Pagamento Intermediário 1</option>
@@ -339,10 +330,7 @@
                       </select>
                     </label>
 
-                    <label>
-                      <span class="visually-hidden">
-                        Percentagem da fase
-                      </span>
+                    <label class="phase-percentage-field">
                       <div class="percentage-input">
                         <input class="payment-phase-percentage"
                                type="number"
@@ -363,10 +351,7 @@
                   </div>
 
                   <div class="phase-editor-row">
-                    <label>
-                      <span class="visually-hidden">
-                        Designação da fase
-                      </span>
+                    <label class="phase-name-field">
                       <select class="payment-phase-name">
                         <option value="Adjudicação">Adjudicação</option>
                         <option value="Pagamento Intermediário 1">Pagamento Intermediário 1</option>
@@ -383,10 +368,7 @@
                       </select>
                     </label>
 
-                    <label>
-                      <span class="visually-hidden">
-                        Percentagem da fase
-                      </span>
+                    <label class="phase-percentage-field">
                       <div class="percentage-input">
                         <input class="payment-phase-percentage"
                                type="number"
@@ -434,10 +416,10 @@
 
                 <div id="vatRows" class="vat-editor-rows">
                   <div class="vat-editor-row">
-                    <label>
-                      <span class="visually-hidden">Taxa de IVA</span>
+                    <label class="vat-rate-field">
                       <div class="percentage-input">
                         <input class="vat-rate"
+                               aria-label="Taxa de IVA"
                                type="number"
                                min="0"
                                max="100"
@@ -447,12 +429,10 @@
                       </div>
                     </label>
 
-                    <label>
-                      <span class="visually-hidden">
-                        Percentagem da base
-                      </span>
+                    <label class="vat-allocation-field">
                       <div class="percentage-input">
                         <input class="vat-allocation"
+                               aria-label="Percentagem da base"
                                type="number"
                                min="0"
                                max="100"
@@ -471,10 +451,10 @@
                   </div>
 
                   <div class="vat-editor-row">
-                    <label>
-                      <span class="visually-hidden">Taxa de IVA</span>
+                    <label class="vat-rate-field">
                       <div class="percentage-input">
                         <input class="vat-rate"
+                               aria-label="Taxa de IVA"
                                type="number"
                                min="0"
                                max="100"
@@ -484,12 +464,10 @@
                       </div>
                     </label>
 
-                    <label>
-                      <span class="visually-hidden">
-                        Percentagem da base
-                      </span>
+                    <label class="vat-allocation-field">
                       <div class="percentage-input">
                         <input class="vat-allocation"
+                               aria-label="Percentagem da base"
                                type="number"
                                min="0"
                                max="100"
