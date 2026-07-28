@@ -1,4 +1,4 @@
-[![Website](https://img.shields.io/website?url=https%3A%2F%2Fdiogocaeiro02.github.io%VertisProcedures%2F)](https://diogocaeiro02.github.io/VertisProcedures/)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fdiogocaeiro02.github.io%2FVertisProcedures%2F)](https://diogocaeiro02.github.io/VertisProcedures/)
 [![GitHub last commit](https://img.shields.io/github/last-commit/diogocaeiro02/VertisProcedures)](https://github.com/diogocaeiro02/VertisProcedures)
 [![GitHub repo size](https://img.shields.io/github/repo-size/diogocaeiro02/VertisProcedures)](https://github.com/diogocaeiro02/VertisProcedures)
 [![GitHub Pages](https://img.shields.io/badge/deployment-GitHub%20Pages-222222?logo=github)](https://pages.github.com/)
